@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Habadu Jasibon! ✨</title>
+
+    <!-- Google Fonts for Elegant Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Background Particle Canvas for Floating Sparkles -->
+    <canvas id="sparkleCanvas"></canvas>
+
+    <main class="container">
+      <header class="header">
+        <span class="badge">Dearest Jassy ✦</span>
+        <h1>Happy 22nd Birthday!</h1>
+      </header>
+
+      <!-- ==================== VINYL MUSIC PLAYER ==================== -->
+      <section class="card music-section">
+        <div class="section-header">
+          <h2>🎵 Birthday Anthem</h2>
+          <span id="musicBadge" class="status-badge">Ready</span>
+        </div>
+
+        <!-- Integrated Audio Source -->
+        <audio id="music" src="Taylor Swift - 22.mp3" preload="auto"></audio>
+
+        <div class="turntable-wrapper">
+          <!-- Vinyl Arm / Needle -->
+          <div id="tonearm" class="tonearm">
+            <div class="tonearm-base"></div>
+            <div class="tonearm-stick"></div>
+            <div class="tonearm-head"></div>
+          </div>
+
+          <!-- Clickable Vinyl Disc -->
+          <div id="vinyl" class="vinyl">
+            <div class="vinyl-groove-1"></div>
+            <div class="vinyl-groove-2"></div>
+            <div class="vinyl-center">
+              <span class="ts-label">TAYLOR SWIFT</span>
+              <p class="age-num">22</p>
+              <span class="ts-sub">EDITION</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="hint-text" id="musicHint">Tap the vinyl to play "22"</p>
+      </section>
+
+      <!-- ==================== INTERACTIVE ENVELOPE ==================== -->
+      <section class="card letter-section">
+        <h2>A Special Letter For You</h2>
+
+        <div id="envelopeWrapper" class="envelope-wrapper">
+          <div class="envelope">
+            <!-- Top Flap with Heart Wax Seal -->
+            <div class="flap">
+              <div class="wax-seal" id="waxSeal">🤍</div>
+            </div>
+
+            <!-- Inside Letter -->
+            <div class="letter" id="letter">
+              <div class="letter-content">
+                <h3>Dear Jassy,</h3>
+                <p>Happy 22nd Birthday! 🎂✨</p>
+                <p>
+                  I hope this brand new chapter of your life brings you endless
+                  happiness, beautiful core memories, successful academic
+                  journey, and a completely healed walking feet lol.
+                </p>
+                <p>
+                  We may not see each other for many months now, or maybe a
+                  year. But do know that you are included in my prayers. May all
+                  your dreams slowly turn into reality and may you always keep
+                  that courage to venture the life that you want. Hoping soon na
+                  magkita na usssss! Mwa!
+                </p>
+                <p>
+                  Di ra halata na clutch ni kay daghan kaayog activities giapas
+                  huhu.
+                </p>
+                <p class="signature">
+                  Xoxo,<br />
+                  <strong>Stef 💗</strong>
+                </p>
+              </div>
+            </div>
+
+            <!-- Envelope Front Pocket -->
+            <div class="envelope-front"></div>
+          </div>
+        </div>
+
+        <p class="hint-text" id="envelopeHint">
+          Tap the heart seal to open your letter
+        </p>
+      </section>
+
+      <!-- ==================== 22 CANDLES CAKE ==================== -->
+      <section class="card cake-section">
+        <h2>Make a Wish!</h2>
+        <p class="hint-text">But before that, blow all 22 candles.</p>
+
+        <div class="cake-container">
+          <!-- 22 Candles Grid -->
+          <div class="candles-grid" id="candlesContainer">
+            <!-- 22 Candles generated automatically via CSS/JS -->
+          </div>
+
+          <!-- Cake Layers -->
+          <div class="cake-top-layer">
+            <div class="drip drip-1"></div>
+            <div class="drip drip-2"></div>
+            <div class="drip drip-3"></div>
+          </div>
+          <div class="cake-bottom-layer">
+            <div class="frosting-line"></div>
+          </div>
+          <div class="cake-plate"></div>
+        </div>
+
+        <button id="blowButton" class="action-btn">🕯️ Blow the Candles</button>
+      </section>
+    </main>
+
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

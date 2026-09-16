@@ -1,0 +1,596 @@
+/* ==================== GLOBAL STYLES ==================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(135deg, #fff0f3 0%, #ffccd5 50%, #fff5f7 100%);
+  color: #4a2630;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  padding: 30px 15px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+#sparkleCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 650px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==================== HEADER ==================== */
+.header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.badge {
+  background: rgba(201, 79, 124, 0.15);
+  color: #c94f7c;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+h1 {
+  color: #8a2345;
+  font-family: "Dancing Script", cursive;
+  font-size: 2.8rem;
+  margin: 12px 0 5px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.subtitle {
+  color: #a84367;
+  font-size: 1rem;
+}
+
+/* ==================== CARD CONTAINERS ==================== */
+.card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  padding: 30px 25px;
+  margin-bottom: 35px;
+  box-shadow: 0 10px 30px rgba(186, 73, 114, 0.12);
+  text-align: center;
+}
+
+.card h2 {
+  color: #8a2345;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.hint-text {
+  font-size: 0.85rem;
+  color: #885566;
+  margin-top: 15px;
+}
+
+/* ==================== VINYL MUSIC SECTION ==================== */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.status-badge {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: #ffe3eb;
+  color: #c94f7c;
+  font-weight: 600;
+}
+
+.status-badge.playing {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.turntable-wrapper {
+  position: relative;
+  width: 230px;
+  height: 230px;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tonearm Needle */
+.tonearm {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  width: 50px;
+  height: 100px;
+  z-index: 10;
+  transform-origin: 20px 20px;
+  transform: rotate(-30deg);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.tonearm.playing {
+  transform: rotate(12deg);
+}
+
+.tonearm-base {
+  width: 26px;
+  height: 26px;
+  background: #444;
+  border: 3px solid #d4af37;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.tonearm-stick {
+  width: 4px;
+  height: 70px;
+  background: linear-gradient(to bottom, #cccccc, #888888);
+  margin-left: 11px;
+}
+
+.tonearm-head {
+  width: 12px;
+  height: 18px;
+  background: #d4af37;
+  border-radius: 2px;
+  margin-left: 7px;
+}
+
+/* Spinning Vinyl */
+.vinyl {
+  position: relative;
+  width: 210px;
+  height: 210px;
+  background: radial-gradient(circle, #2c2c2c 0%, #111111 70%, #050505 100%);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.vinyl:hover {
+  transform: scale(1.03);
+}
+
+.vinyl-groove-1,
+.vinyl-groove-2 {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px stroke rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+.vinyl-groove-1 {
+  width: 170px;
+  height: 170px;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+}
+
+.vinyl-groove-2 {
+  width: 130px;
+  height: 130px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.vinyl-center {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.ts-label {
+  font-size: 7px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.age-num {
+  font-size: 22px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.ts-sub {
+  font-size: 6px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Vinyl Spin Animation */
+.spinning {
+  animation: spinVinyl 2.5s linear infinite;
+}
+
+@keyframes spinVinyl {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==================== ENVELOPE & LETTER SECTION ==================== */
+.letter-section {
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+/* CLOSED STATE: Compact normal margin (No awkward white space!) */
+.envelope-wrapper {
+  position: relative;
+  width: 300px;
+  height: 190px;
+  margin: 25px auto 20px; /* Compact & balanced when closed */
+  cursor: pointer;
+  perspective: 1000px;
+  transition:
+    margin-top 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    margin-bottom 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* OPEN STATE: Dynamically creates room for the letter as it opens */
+.envelope-wrapper.open {
+  margin-top: 155px; /* Expands smoothly only when opened! */
+  margin-bottom: 25px;
+}
+
+.envelope {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #f7cad0;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  box-shadow: 0 10px 25px rgba(201, 79, 124, 0.2);
+}
+
+/* Flap top triangle */
+.flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-top: 110px solid #e29578;
+  transform-origin: top center;
+  transition:
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    z-index 0.6s;
+  z-index: 4;
+}
+
+/* Heart Wax Seal */
+.wax-seal {
+  position: absolute;
+  top: -105px;
+  left: -20px;
+  width: 40px;
+  height: 40px;
+  background: #c94f7c;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease;
+}
+
+.wax-seal:hover {
+  transform: scale(1.15);
+}
+
+/* Envelope Front Pocket */
+.envelope-front {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 150px solid #ffb5a7;
+  border-right: 150px solid #ffb5a7;
+  border-bottom: 100px solid #f7cad0;
+  border-top: 100px solid transparent;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Inside Letter - Tucked inside envelope when closed */
+.letter {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  background: #fffdf9;
+  padding: 18px;
+  border-radius: 10px;
+  border: 1px solid #fae1dd;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transition:
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s ease,
+    z-index 0.6s;
+
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  z-index: 1;
+  pointer-events: none;
+  text-align: left;
+}
+
+.letter-content h3 {
+  color: #8a2345;
+  font-family: "Dancing Script", cursive;
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.letter-content p {
+  font-size: 0.83rem;
+  line-height: 1.45;
+  color: #553344;
+  margin-bottom: 8px;
+}
+
+.signature {
+  margin-top: 10px;
+  text-align: right;
+  font-size: 0.85rem;
+}
+
+/* OPEN STATE ANIMATIONS */
+.envelope-wrapper.open .flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.envelope-wrapper.open .letter {
+  opacity: 1;
+  transform: translateY(-145px) scale(1);
+  z-index: 10;
+  pointer-events: auto;
+}
+
+/* ==================== OPEN STATE ANIMATION ==================== */
+.envelope-wrapper.open .flap {
+  transform: rotateX(180deg);
+  z-index: 1; /* Pushes flap behind letter */
+}
+
+.envelope-wrapper.open .letter {
+  opacity: 1;
+  transform: translateY(-155px) scale(1); /* Slides letter UP cleanly */
+  z-index: 10; /* Brings letter on top of envelope pocket */
+  pointer-events: auto;
+}
+
+/* ==================== CAKE & 22 CANDLES ==================== */
+.cake-container {
+  position: relative;
+  width: 300px;
+  margin: 40px auto 20px;
+}
+
+.candles-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  width: 240px;
+  margin: 0 auto -6px;
+  position: relative;
+  z-index: 4;
+}
+
+.candle {
+  width: 6px;
+  height: 38px;
+  background: linear-gradient(to bottom, #ff9a9e, #fecfef);
+  border-radius: 3px;
+  position: relative;
+}
+
+.flame {
+  width: 10px;
+  height: 15px;
+  background: radial-gradient(
+    ellipse at bottom,
+    #ffee55 0%,
+    #ff8800 60%,
+    #ff3300 100%
+  );
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  position: absolute;
+  top: -15px;
+  left: -2px;
+  box-shadow:
+    0 0 10px #ff9900,
+    0 0 20px #ff5500;
+  animation: flicker 0.6s infinite alternate;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.flame.off {
+  opacity: 0;
+  transform: scale(0.2);
+  animation: none;
+}
+
+/* Smoke effect on blowout */
+.smoke {
+  position: absolute;
+  top: -18px;
+  left: -2px;
+  width: 8px;
+  height: 8px;
+  background: rgba(200, 200, 200, 0.6);
+  border-radius: 50%;
+  animation: floatSmoke 1s forwards;
+  pointer-events: none;
+}
+
+@keyframes floatSmoke {
+  0% {
+    opacity: 0.8;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-25px) scale(2.5);
+  }
+}
+
+@keyframes flicker {
+  0% {
+    transform: scale(1) rotate(-2deg);
+  }
+  100% {
+    transform: scale(1.15) rotate(2deg);
+  }
+}
+
+/* Cake Layers */
+.cake-top-layer {
+  position: relative;
+  width: 220px;
+  height: 45px;
+  background: #ffb3c6;
+  margin: 0 auto;
+  border-radius: 12px 12px 0 0;
+  box-shadow: inset 0 4px 6px rgba(255, 255, 255, 0.5);
+}
+
+.cake-bottom-layer {
+  position: relative;
+  width: 260px;
+  height: 55px;
+  background: #ff8fa3;
+  margin: 0 auto;
+  border-radius: 0 0 12px 12px;
+  box-shadow: inset 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.drip {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 0 0 10px 10px;
+  top: 0;
+}
+.drip-1 {
+  left: 20px;
+  width: 18px;
+  height: 16px;
+}
+.drip-2 {
+  left: 90px;
+  width: 22px;
+  height: 20px;
+}
+.drip-3 {
+  right: 30px;
+  width: 20px;
+  height: 14px;
+}
+
+.cake-plate {
+  width: 290px;
+  height: 12px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Action Button */
+.action-btn {
+  background: linear-gradient(135deg, #c94f7c 0%, #a84367 100%);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(201, 79, 124, 0.3);
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201, 79, 124, 0.45);
+}
+
+.action-btn:active {
+  transform: translateY(0);
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+  .card {
+    padding: 22px 16px;
+  }
+  .envelope-wrapper {
+    width: 270px;
+  }
+  .flap {
+    border-left-width: 135px;
+    border-right-width: 135px;
+  }
+  .envelope-front {
+    border-left-width: 135px;
+    border-right-width: 135px;
+  }
+  .letter {
+    width: 246px;
+  }
+}
